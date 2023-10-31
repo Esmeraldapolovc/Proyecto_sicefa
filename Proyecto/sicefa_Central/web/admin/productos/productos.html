@@ -1,0 +1,202 @@
+<div class="row  mt-5 mb-3" id="divDetalleProductos">
+    <div class="col-11 m-auto">
+        <div class="card">
+            <div class="card-header bg-success">
+                <span class="h4 text-white">M&oacute;dulo de control de Productos</span>
+                <button class="float-end btn btn-success" onclick="cm.setDetallesProductoVisible(false);">
+                    <i class="fa fa-times"></i> 
+                </button>
+            </div>
+            <div class="card-body bg-success-subtle">
+                <div class="container mt-3">
+                    <form>
+                        <div class="row">
+                            <div class="col-2">
+                                <div class="form-floating mb-3">
+                                    <input id="txtIdProducto" type="text" class=" form-control" placeholder="ID:">
+                                    <label for="txtIdProducto">ID:</label>
+
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" id="txtnombreP" placeholder="Nombre Producto:">
+                                    <label for="txtnombreP">Nombre Producto</label>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" id="txtnombrePg" placeholder="Nombre Genérico:">
+                                    <label for="txtnombrePg">Nombre Gen&eacute;rico</label>
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="form-floating mb-3">
+                                    <select class="form-select" id="txtformaF" aria-label="Forma Farmacéutica:">
+                                        <option selected></option>
+                                        <option value="ta">Tabletas</option>
+                                        <option value="ca">Cápsulas</option>
+                                        <option value="ja">Jarabe</option>
+                                        <option value="in">Inyectable</option>
+                                    </select>
+                                    <label for="txtformaF">Forma Farmacéutica</label>
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="form-floating mb-3">
+                                    <select class="form-select" id="cmbprecentacion" aria-label="Presentación">
+                                        <option selected></option>
+                                        <option value="fr">Frascos</option>
+                                        <option value="bl">Blíster</option>
+                                        <option value="am">Ampolletas</option>
+                                        <option value="so">Sobres</option>
+                                    </select>
+                                    <label for="cmbprecentacion">Presentación</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-2">
+                                    <div class="form-floating mb-3">
+                                        <input type="text" class="form-control" id="txtunidadM" placeholder="Unidad de medida">
+                                        <label for="txtunidadM">Unidad de med.</label>
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                    <div class="form-floating mb-3">
+                                        <input type="text" class="form-control" id="txtunidadEv" placeholder="Unidad de medida">
+                                        <label for="txtunidadEv">Unidades</label>
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                    <div class="form-floating mb-3">
+                                        <input type="text" class="form-control" id="txtconcentracion" placeholder="Concentración">
+                                        <label for="txtconcentracion">Concentraci&oacute;n</label>
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                    <div class="form-floating mb-3">
+                                        <input type="text" class="form-control" id="txtprecioC" placeholder="Precio Compra">
+                                        <label for="txtprecioC">Precio Compra</label>
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                    <div class="form-floating mb-3">
+                                        <input type="text" class="form-control" id="txtprecioV" placeholder="Precio Venta">
+                                        <label for="txtprecioV">Precio venta</label>
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                    <div class="form-floating mb-3">
+                                        <input type="text" class="form-control" id="txtcodigoB" placeholder="Código de barras">
+                                        <label for="txtcodigoB">Código de barras</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-floating mb-3">
+                                        <textarea class="textArea autoExpand" rows="6" data-min-rows='6' id="txtindicacionP" placeholder="Indicaciones" autofocus></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-floating mb-3">
+                                        <textarea class="textArea autoExpand" rows="6" data-min-rows='6' id="txtcontradicciones" placeholder="Contraindicaciones" autofocus></textarea>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-4">
+                                    <div class="form-floating mb-3">
+                                        <input type="file" class="form-control" id="txtfotoP" accept="image/*" onchange="previewImage(event)">
+                                        <label for="txtfotoP">Seleccionar imagen</label>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-floating mb-3">
+                                        <input type="text" class="form-control" id="txtrutaFotoP" placeholder="Ruta de imagen">
+                                        <label for="txtrutaFotoP">Ruta de imagen</label>
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                    <div class="form-floating mb-3">
+                                        <select class="form-select" id="cmbEstadoP" aria-label="Estado">
+                                            <option selected></option>
+                                            <option value="1">Activo</option>
+                                            <option value="0">Inactivo</option>
+                                        </select>
+                                        <label for="cmbEstado">Estado</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-4">
+                                    <img id="imagenPreview" class="card-img-top" src="">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="text-center">
+                                    <div class="justify-content-center">
+                                        <button class="btn btn-primary mb-2" onclick="cm.saveProduct()">
+                                            <i class="fa fa-save"></i>
+                                            Guardar</button>
+                                        <button class="btn btn-danger mb-2" onclick="cm.deleteProduct()">
+                                            <i class="fa fa-trash"></i>
+                                            Eliminar</button>
+                                        <button class="btn btn-success mb-2" onclick="cm.clearForm()">
+                                            <i class="fa fa-brush"></i>
+                                            Limpiar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-5 mb-5" id="divCatalogoProductos">
+    <div class="col-11 m-auto">
+        <div class="card">
+            <div class="col-12 d-flex card-header bg-success">
+                <span class=" mt-3 h3 text-white">Cat&aacute;logo de Productos</span>
+                <nav class="col4">
+                    <div class="container-fluid m-2">
+                        <form class="d-flex" role="search">
+                            <input id="searchTerm" class="form-control me-2" type="search" aria-label="Search">
+                            <button id="searchButton" class="btn btn-success" type="button"><i class="fa fa-search"></i></button>
+                          <button id="searchButton" class="btn btn-success" onclick="cm.cleanAndShowProduct()" type="button"><i class="fa fa-plus"></i></button>
+                        </form>
+                    </div>
+                </nav>
+            </div>
+            <div class="card-body bg-success-subtle">
+               
+                <table class="table table-hover ">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Nombre Genérico</th>
+                            <th>Unidad de Medida</th>
+                            <th>Concentración</th>
+                            <th>Unidades por Envase</th>
+                            <th>Precio Compra</th>
+                            <th>Precio Venta</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbodyProductos">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+           </div>
+</div>
+<div class="row">
+    <div class="">
+    </div>
+    <div class="col-12">
+    </div>
+</div>
