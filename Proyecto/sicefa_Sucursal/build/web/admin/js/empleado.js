@@ -1,241 +1,121 @@
-let empleados = [
-    {
-        "id": 2,
-        "clave": "7wdwdw",
-        "email": "tovardiazjuana@gmail",
-        "fechaContratacion": "15/06/2029",
-        "puesto": "administrador",
-        "salarioBruto": 11370.00,
-        "estatus": 1,
-
-        "persona": {
-            "id": 45,
-            "nombre": "polo",
-            "apellidopaterno": "Tovar",
-            "apellidoMaterno": "Diaz",
-            "genero": "H",
-            "rfc": "3hhdehdedhwe",
-            "curp": "4d46484reref",
-            "fechadenacimiento": "15 / 10 / 2029",
-            "foto": "",
-            "domicilio": "provada los pinos no.10",
-            "codigoPostal": "3427",
-            "ciudad": "Leon",
-            "estado": "Guanajuato",
-            "telefono": "4721228360"
-        },
-        "usuario": {
-            "id": 7,
-            "nombreUsuario": "gmail",
-            "contrasenia": "utlsecret#",
-            "rol": "ADMS"
-        }
-    },
-    {
-        "id": 8,
-        "clave": "76334",
-        "email": "tovardiazjuana@gmail",
-        "fechaContratacion": "5/9/2029",
-        "puesto": "Empleado",
-        "salarioBruto": 1000.00,
-        "estatus": 1,
-        "persona": {
-            "id": 98,
-            "nombre": "Giovani",
-            "apellidopaterno": "Diaz",
-            "apellidoMaterno": "Martinez",
-            "genero": "M",
-            "rfc": "3hhdehdedhwe",
-            "curp": "4d46484reref",
-            "fechadenacimiento": "15 / 10 / 2029",
-            "foto": "",
-            "domicilio": "provada los pinos no.10",
-            "codigoPostal": "3427",
-            "ciudad": "Leon",
-            "estado": "Guanajuato",
-
-            "telefono": "4721228360"
-        },
-        "usuario": {
-            "id": 3,
-            "nombreUsuario": "gmail",
-            "contrasenia": "utlsecret#",
-            "rol": "ADMS"
-        }
-    }, {
-        "id": 4,
-        "clave": "67532",
-        "email": "tovardiazjuana@gmail",
-        "fechaContratacion": "15/10/2029",
-        "puesto": "administrador",
-        "salarioBruto": 11370.00,
-        "estatus": 1,
-        "persona": {
-            "id": 9,
-            "nombre": "Nora",
-            "apellidopaterno": "Diaz",
-            "apellidoMaterno": "Martinez",
-            "genero": "M",
-            "rfc": "3hhdehdedhwe",
-            "curp": "4d46484reref",
-            "fechadenacimiento": "15 / 10 / 2029",
-            "foto": "",
-            "domicilio": "provada los pinos no.10",
-            "codigoPostal": "3427",
-            "ciudad": "Leon",
-            "estado": "Guanajuato",
-            "telefono": "4721228360"
-        },
-        "usuario": {
-            "id": 21,
-            "nombreUsuario": "gmail",
-            "contrasenia": "utlsecret#",
-            "rol": "ADMS"
-        }
-    },
-    {
-        "id": 10,
-        "clave": "67532",
-        "email": "tovardiazjuana@gmail",
-        "fechaContratacion": "15/10/2029",
-        "puesto": "administrador",
-        "salarioBruto": 11370.00,
-        "estatus": 1,
-        "persona": {
-            "id": 1,
-            "nombre": "Nora",
-            "apellidopaterno": "Diaz",
-            "apellidoMaterno": "Martinez",
-            "genero": "M",
-            "rfc": "3hhdehdedhwe",
-            "curp": "4d46484reref",
-            "fechadenacimiento": "15 / 10 / 2029",
-            "foto": "",
-            "domicilio": "provada los pinos no.10",
-            "codigoPostal": "3427",
-            "ciudad": "Leon",
-            "estado": "Guanajuato",
-            "telefono": "4721228360"
-        },
-        "usuario": {
-            "id": 57,
-            "nombreUsuario": "gmail",
-            "contrasenia": "utlsecret#",
-            "rol": "ADMS"
-        }
-    },
-    {
-        "id": 11,
-        "clave": "67532",
-        "email": "tovardiazjuana@gmail",
-        "fechaContratacion": "15 / 10 / 2029",
-        "puesto": "administrador",
-        "salarioBruto": 11370.00,
-        "estatus": 1,
-        "persona": {
-            "id": 32,
-            "nombre": "Nora",
-            "apellidopaterno": "Diaz",
-            "apellidoMaterno": "Martinez",
-            "genero": "M",
-            "rfc": "3hhdehdedhwe",
-            "curp": "4d46484reref",
-            "fechadenacimiento": "15 / 10 / 2029",
-            "foto": "",
-            "domicilio": "provada los pinos no.10",
-            "codigoPostal": "3427",
-            "ciudad": "Leon",
-            "estado": "Guanajuato",
-            "telefono": "4721228360"
-        },
-        "usuario": {
-            "id": 10,
-            "nombreUsuario": "gmail",
-            "contrasenia": "utlsecret#",
-            "rol": "ADMS"
-        }
-    }
-];
+let empleados =[]; 
 
 
 //conts filtrador = new mdb.Datatable(document.getAnimations(),data)
 
 //Esta funcion nos sirve para inicializar el modulo.
 //de Empleados
-export function inicializar() {
+export async function inicializar() {
     setDetallesEmpleadoVisible(false);
-    fillTableEmpleado();
-    
+    refreshTableEmpleados();
 }
 
-//insert y update en el mismo metodo
-export function save()
-{
-    //Declara un objeto donde se guardaran los datos del Empleado
-    let emp = null;
-    let posicion = -1; //para saber si un empleado ya existe o no.
-    let idEmpleado = 0;
-    //Revisamos si hay un Id de empleado:
 
-    if (document.getElementById("txtIdEmpleado").value.trim().length > 0)// trim quita espacios de isquiera o derecha
+// Insert y Update en el mismo metodo:
+export async function save()
+{
+    let url = "http://localhost:8080/sicefa_backend/api/empleado/save";
+    let params = null;
+    let resp = null;
+    let datos = null;
+    // Declaramos un objeto donde guardaremos los datos del empleado:
+    let emp = null;   
+    let idEmpleado = 0;
+    let idPersona = 0;
+    let idUsuario = 0;
+    
+    // Revisamos si hay un ID de empleado:
+    if (document.getElementById("txtIdEmpleado").value.trim().length > 0)
     {
         idEmpleado = parseInt(document.getElementById("txtIdEmpleado").value.trim());
-        posicion = buscarPosicionEmpleadoPorId(idEmpleado);
-
-        //SI posicion es mayor o igual a 0, si encontramos el empleado:
-        if (posicion >= 0)
-            emp = empleados[posicion];
-        else {
-            //Si no hay un empleado con el ID descrito
-            //creamos una nueva instancia del objeto
-
-            emp = new Object();
-            emp.id = idEmpleado;
-            emp.persona = new Object();
-            emp.persona.id = parseInt(document.getElementById("txtIdPersona").value.trim());
-            emp.usuario = new Object();
-            emp.usuario.id = parseInt(document.getElementById("txtIdUsuario").value.trim());
-
-            //incerta el objeto emp dentro del arreglo empleado:
-            empleados.push(emp);
-        }
-
-        //continuamos llenando los datos del objeto
-        //Datos de persona:
-        //Datos de persona
-        emp.persona.nombre = document.getElementById("txtNombre").value;
-        emp.persona.apellidopaterno = document.getElementById("txtApellido").value;
-        emp.persona.apellidoMaterno = document.getElementById("txtMaterno").value;
-        emp.persona.genero = document.getElementById("cmbGenero").value;
-        emp.persona.fechadenacimiento = document.getElementById("txtFechaNacimiento").value;
-        emp.persona.rfc = document.getElementById("txtRFC").value;
-        emp.persona.curp = document.getElementById("txtCURP").value;
-        emp.persona.foto = document.getElementById("SelectImage").value;
-        emp.persona.domicilio = document.getElementById("txtDomicilio").value;
-        emp.persona.codigoPostal = document.getElementById("txtCodigopostal").value;
-        emp.persona.ciudad = document.getElementById("txtCiudad").value;
-        emp.persona.estado = document.getElementById("txtEstado").value;
-        emp.persona.telefono = document.getElementById("txtTelefono").value;
-
-        //Datos de Empleados
-
-        emp.clave = document.getElementById("txtCodigoEmpleado").value;
-        emp.email = document.getElementById("txtEmail").value;
-        emp.fechaContratacion = document.getElementById("txtFechaIngreso").value;
-        emp.puesto = document.getElementById("txtPuesto").value;
-        emp.salarioBruto = document.getElementById("txtSalarioMensual").value;
-        // document.getElementById("status").value = emp.status;
-
-
-        //Refrescamos la tabla
-        fillTableEmpleado();
-
-        swal.fire('Movimiento Realizado', 'Datos de Empleado Actualizado correctamente', 'success');
-    } else
+        idPersona = parseInt(document.getElementById("txtIdPersona").value.trim());
+        idUsuario = parseInt(document.getElementById("txtIdUsuario").value.trim());
+    }    
+        
+    // Si no hay un empleado con el ID descrito,
+    // creamos una nueva instancia del Objeto:
+    emp = new Object();
+    emp.id = idEmpleado;
+ 
+    emp.persona = new Object();
+    emp.persona.id = idPersona;
+    
+    emp.usuario = new Object();
+    emp.usuario.id = idUsuario;
+    
+    emp.sucursal = new Object();
+    emp.sucursal.id = 0;
+        
+    // Si posicion es mayor o igual a 0, si encontramos un empleado:
+   // if (posicion >= 0)
+  //      emp = empleados[posicion];
+  //  else
+  //  {
+ 
+ 
+        // Insertamos el objeto emp dentro del arreglo de empleados:
+   //     empleados.push(emp);
+    //}
+        
+    // Continuamos llenando los datos del objeto:
+    // Datos de Persona:
+    emp.persona.nombre = document.getElementById("txtNombre").value;
+    emp.persona.apellidoPaterno = document.getElementById("txtApellidoPaterno").value;
+    emp.persona.apellidoMaterno = document.getElementById("txtApellidoMaterno").value;
+    emp.persona.genero = document.getElementById("cmbGenero").value;
+    emp.persona.fechaNacimiento = document.getElementById("txtFechaNacimiento").value;
+    emp.persona.rfc = document.getElementById("txtRFC").value;
+    emp.persona.curp = document.getElementById("txtCURP").value;
+    emp.persona.domicilio = document.getElementById("txtDomicilio").value;
+    emp.persona.cp = document.getElementById("txtCodigopostal").value;
+    emp.persona.ciudad = document.getElementById("txtCiudad").value;
+    emp.persona.estado = document.getElementById("txtEstado").value;
+    emp.persona.telefono = document.getElementById("txtTelefono").value;
+ 
+    // Datos del Empleado:
+    emp.codigo = document.getElementById("txtCodigoEmpleado").value;
+    emp.email = document.getElementById("txtEmail").value;
+    emp.fechaContratacion = document.getElementById("txtFechaIngreso").value;
+    emp.puesto = document.getElementById("txtPuesto").value;
+    emp.salarioBruto = document.getElementById("txtSalarioMensual").value; 
+    emp.sucursal.id = document.getElementById("cmbSucursal").value;
+ 
+    // Datos de Usuario:
+    emp.usuario.nombreUsuario = document.getElementById("txtNombreUsuario").value;
+    emp.usuario.contrasenia = document.getElementById("txtContrasenia").value;
+    emp.usuario.rol = document.getElementById("cmbRol").value;
+    
+    params = {
+             datosEmpleados : JSON.stringify(emp)
+    };
+    
+    let ctype = 'application/X-WWW-form-urlencoded;charset=UTF-8';
+    resp = await fetch( url,
     {
-        swal.fire('verificaci&oacute;n de datos requerida',
-                'Deve de agregar el ID al Empleado (Valor num&eacute;rico)', 'warning');
+        method : "POST",
+        headers:{'Content-Type':ctype},
+        body: new URLSearchParams(Params)
+    });
+    
+    datos = await resp.json();
+    
+    if(datos.error !=null){
+        Swal.fire('Error al guardar los datos de empleados.', datos.error, 'warning');
+        return;
     }
+    if(datos.exception !=null){
+            Swal.fire('',datos.exception, 'danger');
+        return;
+    }
+
+    cargarDatosEmpleadosEnFornulario(datos);
+    Swal.fire('Movimiento Realizado',
+              'Datos de Empleado Actualizacion correctamente.', 
+               'success')
+    // Refrescamos el catalogo de empleados:
+    fillTableEmpleado();
+ 
+  
 }
 
 export function deleteEmpleado()
@@ -282,42 +162,72 @@ export function getEmpleado()
 
 }
 
+
+export async function refreshTableEmpleados()
+{
+    let url = "http://localhost:8080/sicefa_backend/api/empleado/getAll";
+    
+    let resp = await fetch(url);
+    let datos = await resp.json();
+    
+    
+    if (datos.error != null)
+    {
+        Swal.fire('', datos.error, 'warning');
+        return;
+    }
+    
+    if (datos.exception != null)
+    {
+        Swal.fire('', datos.exception, 'danger');
+        return;
+    }
+    empleados=datos;
+    fillTableEmpleado();
+}
 //llena la tabla de Empleados.
 //Con el arreglo.
 function fillTableEmpleado()
 {
-    //aqui vamos ir guardando el contenido de la tabla  del
-    //tbody de la tabla de Empleados :
+    //Aqui vamos a ir guardando el contenido del
+    //tbody de la tabla de empleados:
     let contenido = '';
-
-//Recorrer el areglo elemento por elemento
+   
+    //Recorremos el arreglo elemento por elemento:
     for (let i = 0; i < empleados.length; i++)
     {
-        contenido += '<tr>' +
-                '<td>' +
-                empleados[i].persona.nombre + ' ' +
-                empleados[i].persona.apellidopaterno + ' ' +
-                empleados[i].persona.apellidoMaterno +
-                '</td>' +
-                '<td> ' + empleados[i].clave + '</td>' +
-                '<td>' + empleados[i].persona.rfc + '</td>' +
-                '<td>' + empleados[i].email + '</td>' +
-                '<td>' + empleados[i].persona.telefono + '</td>' +
-                '<td>' + empleados[i].id +'</td>' +
-                '<td>' +
-                ' <a href="#" class="text-success text-decoration-none" onclick="cm.cargarDetalleEmpleado(' + i + ');"><i class="fa fa-circle-info"></i></a>'+
-                '</td>' +
-                '</tr>';
+        contenido +=    '<tr>' +
+                            '<td>' +
+                                empleados[i].persona.nombre + ' ' +
+                                empleados[i].persona.apellidoPaterno + ' ' +
+                                empleados[i].persona.apellidoMaterno +
+                            '</td>' +
+                            '<td>' + empleados[i].codigo + '</td>' +
+                            '<td>' + empleados[i].persona.rfc + '</td>' +
+                            '<td>' + empleados[i].email + '</td>' +
+                            '<td>' + empleados[i].persona.telefono + '</td>' +
+                            '<td>' +
+                                '<a href="#" class="text-info" onclick="cm.cargarDetalleEmpleado(' + i + ');"><i class="fa-brands fa-wpforms"></i></a>' +
+                            '</td>' +
+                        '</tr>';
     }
+   
     document.getElementById("tbodyEmpleados").innerHTML = contenido;
 }
 
-export function cargarDetalleEmpleado(posicion)
+export function cargarDatosEmpleadosEnFomulario(emp)
+{
+    alert(JSON.stringify(emp));
+    //Llenamos la caja de texto y demas controles con los datos del
+    //empleados que recuperamos
+}   
+
+export async function cargarDetalleEmpleado(emp)
 {
 
-
+  
     //Recuperamos el Empleado en la posicion indicada:
-    let emp = empleados[posicion];
+    alert(JSON.stringify(emp))
 
     // LLenamos las cajas de texto y demas controles con los datos del
     // empleado que recuperamos previamente:
@@ -367,8 +277,8 @@ export function clearForm()
     //Datos de persona
 
     document.getElementById("txtNombre").value = '';
-    document.getElementById("txtApellido").value = '';
-    document.getElementById("txtMaterno").value = '';
+    document.getElementById("txtApellidoPaterno").value = '';
+    document.getElementById("txtApellidoMaterno").value = '';
     document.getElementById("cmbGenero").value = '';
     document.getElementById("txtFechaNacimiento").value = '';
     document.getElementById("txtRFC").value = '';
@@ -459,5 +369,31 @@ function previewImage(event) {
     if (file) {
         reader.readAsDataURL(file);
         }
+}
+
+export async function cargarSucursales()
+{
+    let url = "http://localhost:8086/sicefa_backend/api/sucursal/getAll";
+    let resp = await fetch(url);
+    let datos = await resp.json();
+    let contenido = '';
+    
+    if (datos.error != null)
+    {
+        Swal.fire('', datos.error, 'warning');
+        return;
+    }
+    
+    if (datos.exception != null)
+    {
+        Swal.fire('', datos.exception, 'danger');
+        return;
+    }
+    
+    //LLenamos las opciones del combo box con el ID y Nombre de la Sucursal:
+    for (let i = 0; i < datos.length; i++)
+        contenido +=  '<option value="' + datos[i].id + '">' + datos[i].nombre + '</option>';
+    
+    document.getElementById("cmbSucursal").innerHTML = contenido;
 }
 
