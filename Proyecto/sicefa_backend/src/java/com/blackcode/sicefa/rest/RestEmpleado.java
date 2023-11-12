@@ -3,7 +3,7 @@ package com.blackcode.sicefa.rest;
 
 import com.blackcode.model.Empleado;
 import com.google.gson.Gson;
-import come.blackcode.sicefa.core.ControllerEmpleado;
+import com.blackcode.sicefa.core.ControllerEmpleado;
 import jakarta.ws.rs.DefaultValue;
 import jakarta.ws.rs.FormParam;
 import jakarta.ws.rs.GET;
@@ -33,6 +33,7 @@ public class RestEmpleado {
        
        try{
            emp = gson.fromJson(datosEmpleado, Empleado.class);
+          
            if(emp.getId() < 1){
                ce.insert(emp);
            }
@@ -42,11 +43,11 @@ public class RestEmpleado {
            out= """
                 {"result":"Datos de empleado gruardados correctamente."}
                 """;
-       }
+           } 
        catch(Exception ex)
        {
            out= """
-                {"exception":"Ocirrio un error en el servidor. %s"}
+                {"exception":"Ocurrio un error en el servidor. %S"}
         
                 """;
            

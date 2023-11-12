@@ -1,7 +1,7 @@
 package com.blackcode.sicefa.rest;
 
 //import com.blackcode.sicefa.core.ControllerInventario;
-import come.blackcode.sicefa.core.ControllerInventario;
+import com.blackcode.sicefa.core.ControllerInventario;
 import com.blackcode.model.Inventario;
 import com.google.gson.Gson;
 import jakarta.ws.rs.GET;

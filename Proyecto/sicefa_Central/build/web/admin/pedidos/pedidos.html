@@ -1,0 +1,108 @@
+<div class="row mt-5">
+    <div class="col-11 m-auto">
+        <div class="card" id="divDetalleCompra">
+            <div class="card-header bg-success">
+                <span class="h3 text-white m-2">Módulo de Pedidos</span>
+                <button class="btn btn-success ms-3 float-end" onclick="cm.setDetalleCompraVisible(false);"><i
+                        class="fa fa-times"></i></button>
+            </div>
+            <div class="card-body bg-success-subtle">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="form">
+                            <div class="row mx-3 mt-3">
+                                <h4 class="text-success mb-3">Detalles de pedido</h4>
+                                <div class="card-body">
+                                    <div class="form">
+                                        <div class="row mx-3 mt-3">
+                                            <div class="col-4">
+                                                <div class="form-floating">
+                                                    <input id="txtIdCompra" type="text" class="form-control"
+                                                        placeholder="ID de compra">
+                                                    <label class="form-label" for="txtIdCompra">ID de Compra:</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-4">
+                                                <div class="form-floating">
+                                                    <input id="txtFecha" type="text" class="form-control"
+                                                        placeholder="Fecha: AAAA-MM-DD">
+                                                    <label class="form-label" for="txtFecha">Fecha:</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-4">
+                                                <div class="form-floating">
+                                                    <input id="txtSucursal" type="text" class="form-control"
+                                                        placeholder="Nombre de Sucursal">
+                                                    <label class="form-label" for="txtSucursal">Nombre de
+                                                        Sucursal:</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row mx-3 mt-3">
+                                            <div class="col-4">
+                                                <div class="form-floating">
+                                                    <input id="txtNombreEmpleado" type="text" class="form-control"
+                                                        placeholder="Nombre de Empleado">
+                                                    <label class="form-label" for="txtNombreEmpleado">Nombre de
+                                                        Empleado:</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-4">
+                                                <div class="form-floating">
+                                                    <input id="txtEstatus" type="text" class="form-control"
+                                                        placeholder="Estatus: Cancelado, Pendiente, Atendido">
+                                                    <label class="form-label" for="txtEstatus">Estatus:</label>
+                                                </div>
+                                            </div>
+                                            <div class="row mt-3">
+                                                <div class="col-12">
+                                                    <div class="text-center">
+                                                        <button class="btn btn-success"
+                                                            onclick="cm.savePedidos();">Guardar Pedido</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row mt-5" id="divCatalogoCompra">
+    <div class="col-md-11 m-auto">
+        <div class="card">
+            <div class="card-header bg-success">
+                <h4>Cat&aacute;logo de pedidos</h4>
+            </div>
+            <div class="card-body bg-success-subtle">
+                <table class="table table-hover">
+                    <div>
+                        <input id="txtFiltro" type="text" placeholder="Buscar" />
+                        <button class="btn btn-primary"><i class="fa fa-search"></i></button>
+                    </div>
+                    <thead>
+                        <tr>
+                            <th>ID de compra</th>
+                            <th>Fecha</th>
+                            <th>Sucursal</th>
+                            <th>Epleado</th>
+                            <th>Estatus</th>
+                            <th></th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="tbodyPedidos">
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

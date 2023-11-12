@@ -1,4 +1,4 @@
-package come.blackcode.sicefa.core;
+package com.blackcode.sicefa.core;
 
 import come.blackcode.sicefa.db.ConexionMySQL;
 import com.blackcode.model.Inventario;

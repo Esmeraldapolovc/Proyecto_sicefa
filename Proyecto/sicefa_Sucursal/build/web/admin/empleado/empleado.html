@@ -47,7 +47,7 @@
                                 <div class="col-3">
                                     <div class="form-floating">
                                         <input type="text" class="form-control" id="txtApellidoPaterno" placeholder="Apellido Paterno">
-                                        <label for="txtApellidoPaterno">Apellido materno</label>
+                                        <label for="txtApellidoPaterno">Apellido Paterno</label>
                                     </div>
                                 </div>
                                 <div class="col-3">
@@ -71,8 +71,9 @@
                             <div class="row mx-3 mt-3">
                                 <div class="col-2">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control" id="txtFechaNacimiento" placeholder="Fecha de nacimiento">
+                                        <input type="text" class="form-control" id="txtFechaNacimiento" placeholder="Fecha de Ingreso">
                                         <label for="txtFechaNacimiento">Fecha de Nacimiento</label>
+
                                     </div>
                                 </div>
                                 <div class="col-2">
@@ -133,16 +134,27 @@
                                         <input type="text" class="form-control" id="txtFechaIngreso" placeholder="Fecha de Ingreso">
                                         <label for="txtFechaIngreso">Fecha de Ingreso</label>
                                     </div>
-                                    <div class="col-2">
-                                        <select id="cmbSucursal"  class="form-select" aria-label="Sucursal" >
-                                            
-                                        </select>
+
+                                </div>
+
+                                <div class="col-2">
+                                    <div class=" form-floating">
+                                        <select id="cmbSucursal" class="form-select" aria-label="Sucursal">
+                                            <option selected>Selecciona una opcion</option>
+                                            <option value=1>a</option>
+                                        </select> 
+                                        <label for="cmbSucursal" >Sucursal</label>
                                     </div>
                                 </div>
+
                                 <div class="col-2">
                                     <div class="form-floating">
-                                        <input type="text" class="form-control" id="txtPuesto" placeholder="puesto">
-                                        <label for="txtPuesto">Puesto</label>
+                                        <select id="cmbPuestol" class="form-select" aria-label="Puesto">
+                                            <option selected>Selecciona una opcion</option>
+                                            <option value="Empledos">Empleado</option>
+                                            <option value="Administrador">Administrador</option>
+                                        </select> 
+                                        <label for="cmbPuesto" >Puesto</label>
                                     </div>
                                 </div>
                                 <div class="col-2">
@@ -151,12 +163,19 @@
                                         <label for="txtSalarioMensual">Salario bruto mensual</label>
                                     </div>
                                 </div>
+                                <div class="mb-3 col-3">
+                                    <div class="form-floating">
+                                        <span><label>Estatus:</label></span>
+                                        <span>----</span>
+                                    </div>
+                                </div>   
                                 <div class="col-3">
                                     <div class="form-floating">
                                         <input type="text" class="form-control" id="txtCodigoEmpleado" placeholder="Codigo de Empleado">
                                         <label for="txtCodigoEmpleado">Codigo de Empleado</label>
                                     </div>
                                 </div>
+
                             </div>
                             <div class="row mx-3 mt-3">
                                 <h4 class="text-success mb-3">Datos de Usuario</h4>
@@ -242,7 +261,7 @@
                             <th>RFC</th>
                             <th>Email</th>
                             <th>Tel&eacute;fono</th>
-                            <th>Id Empleado</th>
+                            
                             <th></th>
                         </tr>
                     </thead>

@@ -8,6 +8,7 @@ let empleados =[];
 export async function inicializar() {
     setDetallesEmpleadoVisible(false);
     refreshTableEmpleados();
+     cargarSucursales();
 }
 
 
@@ -50,12 +51,10 @@ export async function save()
    // if (posicion >= 0)
   //      emp = empleados[posicion];
   //  else
-  //  {
- 
- 
-        // Insertamos el objeto emp dentro del arreglo de empleados:
-   //     empleados.push(emp);
-    //}
+ //  {
+  // Insertamos el objeto emp dentro del arreglo de empleados:
+        empleados.push(emp);
+   // }
         
     // Continuamos llenando los datos del objeto:
     // Datos de Persona:
@@ -66,8 +65,9 @@ export async function save()
     emp.persona.fechaNacimiento = document.getElementById("txtFechaNacimiento").value;
     emp.persona.rfc = document.getElementById("txtRFC").value;
     emp.persona.curp = document.getElementById("txtCURP").value;
+    emp.persona.foto = document.getElementById("SelectImage").value;
     emp.persona.domicilio = document.getElementById("txtDomicilio").value;
-    emp.persona.cp = document.getElementById("txtCodigopostal").value;
+    emp.persona.codigoPostal = document.getElementById("txtCodigopostal").value;
     emp.persona.ciudad = document.getElementById("txtCiudad").value;
     emp.persona.estado = document.getElementById("txtEstado").value;
     emp.persona.telefono = document.getElementById("txtTelefono").value;
@@ -76,7 +76,7 @@ export async function save()
     emp.codigo = document.getElementById("txtCodigoEmpleado").value;
     emp.email = document.getElementById("txtEmail").value;
     emp.fechaContratacion = document.getElementById("txtFechaIngreso").value;
-    emp.puesto = document.getElementById("txtPuesto").value;
+    emp.puesto = document.getElementById("cmbPuestol").value;
     emp.salarioBruto = document.getElementById("txtSalarioMensual").value; 
     emp.sucursal.id = document.getElementById("cmbSucursal").value;
  
@@ -89,12 +89,12 @@ export async function save()
              datosEmpleados : JSON.stringify(emp)
     };
     
-    let ctype = 'application/X-WWW-form-urlencoded;charset=UTF-8';
+    let ctype = 'application/x-www-form-urlencoded;charset=UTF-8';
     resp = await fetch( url,
     {
         method : "POST",
         headers:{'Content-Type':ctype},
-        body: new URLSearchParams(Params)
+        body: new URLSearchParams(params)
     });
     
     datos = await resp.json();
@@ -104,16 +104,20 @@ export async function save()
         return;
     }
     if(datos.exception !=null){
-            Swal.fire('',datos.exception, 'danger');
+            Swal.fire('',datos.exception, 'warning');
         return;
     }
-
+     // Refrescamos el catalogo de empleados:
+    
+    
+    fillTableEmpleado();
+    
+   alert(JSON.stringify(datos));
     cargarDatosEmpleadosEnFornulario(datos);
     Swal.fire('Movimiento Realizado',
               'Datos de Empleado Actualizacion correctamente.', 
-               'success')
-    // Refrescamos el catalogo de empleados:
-    fillTableEmpleado();
+               'success');
+   
  
   
 }
@@ -179,7 +183,7 @@ export async function refreshTableEmpleados()
     
     if (datos.exception != null)
     {
-        Swal.fire('', datos.exception, 'danger');
+        Swal.fire('', datos.exception, 'warning');
         return;
     }
     empleados=datos;
@@ -215,32 +219,26 @@ function fillTableEmpleado()
     document.getElementById("tbodyEmpleados").innerHTML = contenido;
 }
 
-export function cargarDatosEmpleadosEnFomulario(emp)
-{
-    alert(JSON.stringify(emp));
-    //Llenamos la caja de texto y demas controles con los datos del
-    //empleados que recuperamos
-}   
+ 
 
 export async function cargarDetalleEmpleado(emp)
 {
 
   
     //Recuperamos el Empleado en la posicion indicada:
-    alert(JSON.stringify(emp))
-
+    alert(JSON.stringify(emp));
     // LLenamos las cajas de texto y demas controles con los datos del
     // empleado que recuperamos previamente:
-    document.getElementById("txtIdEmpleado").value = emp.id;
-    document.getElementById("txtIdPersona").value = emp.persona.id;
-    document.getElementById("txtIdUsuario").value = emp.usuario.id;
-
+    document.getElementById("txtIdEmpleado").value = emp.idEmpleado;
+    document.getElementById("txtIdPersona").value = emp.persona.idPersona;
+    document.getElementById("txtIdUsuario").value = emp.usuario.idUsuario;
+   
     // Datos de Persona:
     document.getElementById("txtNombre").value = emp.persona.nombre;
-    document.getElementById("txtApellido").value = emp.persona.apellidopaterno;
-    document.getElementById("txtMaterno").value = emp.persona.apellidoMaterno;
+    document.getElementById("txtApellidoPaterno").value = emp.persona.apellidoPaterno;
+    document.getElementById("txtApellidoMaterno").value = emp.persona.apellidoMaterno;
     document.getElementById("cmbGenero").value = emp.persona.genero;
-    document.getElementById("txtFechaNacimiento").value = emp.persona.fechadenacimiento;
+    document.getElementById("txtFechaNacimiento").value = emp.persona.fechaNacimiento;
     document.getElementById("txtRFC").value = emp.persona.rfc;
     document.getElementById("txtCURP").value = emp.persona.curp;
     document.getElementById("txtDomicilio").value = emp.persona.domicilio;
@@ -248,14 +246,14 @@ export async function cargarDetalleEmpleado(emp)
     document.getElementById("txtCiudad").value = emp.persona.ciudad;
     document.getElementById("txtEstado").value = emp.persona.estado;
     document.getElementById("txtTelefono").value = emp.persona.telefono;
-
+   
     // Datos del Empleado:
-    document.getElementById("txtCodigoEmpleado").value = emp.clave;
+    document.getElementById("txtCodigoEmpleado").value = emp.codigo;
     document.getElementById("txtEmail").value = emp.email;
-    document.getElementById("txtFechaIngreso").value = emp.fechaContratacion;
-    document.getElementById("txtPuesto").value = emp.puesto;
-    document.getElementById("txtSalarioMensual").value = emp.salarioBruto;
-
+    document.getElementById("txtFechaIngreso").value = emp.fechaIngreso;
+    document.getElementById("cmbPuesto").value = emp.puesto;
+    document.getElementById("txtSalarioMensual").value = emp.salarioBruto;   
+   
     // Datos de Usuario:
     document.getElementById("txtNombreUsuario").value = emp.usuario.nombreUsuario;
     document.getElementById("txtContrasenia").value = emp.usuario.contrasenia;
@@ -270,7 +268,7 @@ export function clearForm()
 {
 
     document.getElementById("txtIdEmpleado").value = '';
-    document.getElementById("txtIdPersona").value = '';
+   
     document.getElementById("txtIdUsuario").value = '';
 
 
@@ -295,7 +293,7 @@ export function clearForm()
     document.getElementById("txtCodigoEmpleado").value = '';
     document.getElementById("txtEmail").value = '';
     document.getElementById("txtFechaIngreso").value = '';
-    document.getElementById("txtPuesto").value = '';
+    document.getElementById("cmbPuestol").value = '';
     document.getElementById("txtSalarioMensual").value = '';
 
     //Datos de Usuario
@@ -373,11 +371,11 @@ function previewImage(event) {
 
 export async function cargarSucursales()
 {
-    let url = "http://localhost:8086/sicefa_backend/api/sucursal/getAll";
+    let url = "http://localhost:8080/sicefa_backend/api/sucursal/getAll";
     let resp = await fetch(url);
     let datos = await resp.json();
     let contenido = '';
-    
+    console.log(datos);
     if (datos.error != null)
     {
         Swal.fire('', datos.error, 'warning');
@@ -386,7 +384,7 @@ export async function cargarSucursales()
     
     if (datos.exception != null)
     {
-        Swal.fire('', datos.exception, 'danger');
+        Swal.fire('', datos.exception, 'error');
         return;
     }
     

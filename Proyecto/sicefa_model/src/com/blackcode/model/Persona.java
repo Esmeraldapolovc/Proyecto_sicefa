@@ -15,10 +15,10 @@ public class Persona {
      String apellidoPaterno;
      String apellidoMaterno;
      String genero;
-     String fechaDeNacimiento;
+     String fechaNacimiento;
      String rfc;
      String curp;
-     String Domicilio;
+     String domicilio;
      String codigoPostal;
      String ciudad;
      String estado;
@@ -65,13 +65,15 @@ public class Persona {
         this.genero = genero;
     }
 
-    public String getFechaDeNacimiento() {
-        return fechaDeNacimiento;
+    public String getFechaNacimiento() {
+        return fechaNacimiento;
     }
 
-    public void setFechaDeNacimiento(String fechaDeNacimiento) {
-        this.fechaDeNacimiento = fechaDeNacimiento;
+    public void setFechaNacimiento(String fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
     }
+
+   
 
     public String getRfc() {
         return rfc;
@@ -90,12 +92,14 @@ public class Persona {
     }
 
     public String getDomicilio() {
-        return Domicilio;
+        return domicilio;
     }
 
-    public void setDomicilio(String Domicilio) {
-        this.Domicilio = Domicilio;
+    public void setDomicilio(String domicilio) {
+        this.domicilio = domicilio;
     }
+
+   
 
     public String getCodigoPostal() {
         return codigoPostal;

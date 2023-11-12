@@ -1,4 +1,4 @@
-package come.blackcode.sicefa.core;
+package com.blackcode.sicefa.core;
 
 import com.blackcode.model.Empleado;
 import com.blackcode.model.Persona;

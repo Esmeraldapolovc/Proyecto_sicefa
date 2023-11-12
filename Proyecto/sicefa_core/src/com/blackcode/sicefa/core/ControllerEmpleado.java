@@ -1,4 +1,4 @@
-package come.blackcode.sicefa.core;
+package com.blackcode.sicefa.core;
 
 import com.blackcode.model.Empleado;
 import com.blackcode.model.Persona;
@@ -54,13 +54,17 @@ public class ControllerEmpleado {
         cstmt.setString(2, e.getPersona().getApellidoPaterno());
         cstmt.setString(3, e.getPersona().getApellidoMaterno());
         cstmt.setString(4, e.getPersona().getGenero());
-        cstmt.setString(5, e.getPersona().getFechaDeNacimiento());
+        cstmt.setString(5, e.getPersona().getFechaNacimiento());
         cstmt.setString(6, e.getPersona().getRfc());
         cstmt.setString(7, e.getPersona().getCurp());
         cstmt.setString(8, e.getPersona().getDomicilio());
         cstmt.setString(9, e.getPersona().getCodigoPostal());
-
+        cstmt.setString(10,e.getPersona().getCiudad());
+        cstmt.setString(11,e.getPersona().getEstado());
+        cstmt.setString(12, e.getPersona().getTelefono());
+        cstmt.setString(13, e.getPersona().getFoto());
         cstmt.setInt(14, e.getSucursal().getId());
+        
 
         cstmt.setString(15, e.getUsuario().getRol());
 
@@ -165,7 +169,7 @@ public class ControllerEmpleado {
         p.setApellidoPaterno(rs.getString("apellidoPaterno"));
         p.setApellidoMaterno(rs.getString("apellidoMaterno"));
         p.setGenero(rs.getString("genero"));
-        p.setFechaDeNacimiento(rs.getString("fechaNacimiento"));
+        p.setFechaNacimiento(rs.getString("fechaNacimiento"));
         p.setRfc(rs.getString("rfc"));
         p.setCurp(rs.getString("curp"));
         p.setDomicilio(rs.getString("domicilio"));

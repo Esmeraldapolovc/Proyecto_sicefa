@@ -5,7 +5,7 @@
 package com.blackcode.sicefa.rest;
 
 import com.blackcode.model.Producto;
-import come.blackcode.sicefa.core.ControllerProductosCentral;
+import com.blackcode.sicefa.core.ControllerProductosCentral;
 import com.google.gson.Gson;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
